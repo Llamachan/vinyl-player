@@ -386,3 +386,47 @@ h1 {
 
     opacity: 0.65;
 }
+
+/* =========================
+   VINYL ANIMATION
+========================= */
+
+.record {
+    transition: transform 0.5s ease;
+}
+
+.record.playing {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.tonearm {
+    transition: transform 0.8s ease;
+    transform-origin: top right;
+}
+
+.tonearm.playing {
+    transform: rotate(12deg);
+}
+
+.record {
+    overflow: hidden;
+}
+
+.record::before {
+    background: linear-gradient(
+        135deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.08),
+        transparent 60%
+    );
+}

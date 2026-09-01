@@ -9,6 +9,9 @@ const playButton = document.getElementById("play");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 
+const record = document.querySelector(".record");
+const tonearm = document.querySelector(".tonearm");
+
 const songs = [
     {
         title: "Zzzz",
@@ -43,11 +46,17 @@ playButton.addEventListener("click", () => {
 
         playButton.textContent = "⏸";
 
+        record.classList.add("playing");
+        tonearm.classList.add("playing");
+
     } else {
 
         audio.pause();
 
         playButton.textContent = "▶";
+
+        record.classList.remove("playing");
+        tonearm.classList.remove("playing");
 
     }
 
@@ -67,6 +76,9 @@ nextButton.addEventListener("click", () => {
 
     playButton.textContent = "⏸";
 
+    record.classList.add("playing");
+    tonearm.classList.add("playing");
+
 });
 
 previousButton.addEventListener("click", () => {
@@ -83,6 +95,9 @@ previousButton.addEventListener("click", () => {
 
     playButton.textContent = "⏸";
 
+    record.classList.add("playing");
+    tonearm.classList.add("playing");
+
 });
 
 audio.addEventListener("ended", () => {
@@ -96,6 +111,11 @@ audio.addEventListener("ended", () => {
     loadSong(songs[currentSong]);
 
     audio.play();
+
+    playButton.textContent = "⏸";
+
+    record.classList.add("playing");
+    tonearm.classList.add("playing");
 
 });
 
@@ -132,3 +152,21 @@ function formatTime(seconds) {
         .padStart(2, "0")}`;
 
 }
+
+audio.addEventListener("play", () => {
+
+    record.classList.add("playing");
+    tonearm.classList.add("playing");
+
+    playButton.textContent = "⏸";
+
+});
+
+audio.addEventListener("pause", () => {
+
+    record.classList.remove("playing");
+    tonearm.classList.remove("playing");
+
+    playButton.textContent = "▶";
+
+});
