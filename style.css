@@ -11,7 +11,13 @@ body {
     justify-content: center;
     align-items: center;
 
-    background: #f8e7a8;
+    background:
+        radial-gradient(
+            circle at top left,
+            #fff3c4,
+            #f8e7a8 45%,
+            #efd995
+        );
 
     font-family: Arial, sans-serif;
 
@@ -29,16 +35,24 @@ body {
 
     border-radius: 30px;
 
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
     box-shadow:
-        0 20px 40px rgba(74, 59, 50, 0.2);
+        0 25px 50px rgba(74, 59, 50, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 h1 {
     margin-bottom: 25px;
 
-    font-size: 24px;
+    font-size: 26px;
 
-    letter-spacing: 7px;
+    letter-spacing: 8px;
+
+    font-weight: 700;
+
+    text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.35);
 }
 
 
@@ -58,9 +72,12 @@ h1 {
 
     border-radius: 22px;
 
+    border: 2px solid rgba(255, 255, 255, 0.25);
+
     box-shadow:
         inset 0 -8px 0 rgba(74, 59, 50, 0.08),
-        0 10px 20px rgba(74, 59, 50, 0.12);
+        inset 0 2px 0 rgba(255, 255, 255, 0.3),
+        0 12px 25px rgba(74, 59, 50, 0.15);
 }
 
 
@@ -81,22 +98,27 @@ h1 {
 
     background:
         radial-gradient(
-            circle,
-            #333 0%,
-            #222 35%,
-            #292525 36%,
-            #111 100%
+            circle at 35% 30%,
+            #444 0%,
+            #252525 25%,
+            #171717 55%,
+            #0d0d0d 100%
         );
 
     box-shadow:
-        0 8px 15px rgba(0, 0, 0, 0.25);
+        0 10px 18px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.04);
 
     display: flex;
 
     justify-content: center;
-    align-items: center;
-}
 
+    align-items: center;
+
+    overflow: hidden;
+
+    transition: transform 0.5s ease;
+}
 
 /* Vinyl grooves */
 
@@ -134,7 +156,12 @@ h1 {
 
     border-radius: 50%;
 
-    background: #e79caf;
+    background:
+        radial-gradient(
+            circle,
+            #efb0be,
+            #e79caf
+        );
 
     display: flex;
 
@@ -142,6 +169,9 @@ h1 {
     align-items: center;
 
     z-index: 2;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .record-label span {
@@ -165,9 +195,13 @@ h1 {
 
     background: #f7e6c5;
 
-    z-index: 3;
-}
+    border: 2px solid #d8c7a8;
 
+    z-index: 3;
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.25);
+}
 
 /* =========================
    TONEARM
@@ -215,13 +249,22 @@ h1 {
     top: 30px;
     right: 17px;
 
-    background: #7c8f78;
+    background:
+        linear-gradient(
+            to right,
+            #697a66,
+            #91a58c,
+            #697a66
+        );
 
     border-radius: 10px;
 
     transform: rotate(-8deg);
 
     transform-origin: top center;
+
+    box-shadow:
+        2px 3px 5px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -279,11 +322,19 @@ h1 {
 .track-info h2 {
     margin-bottom: 5px;
 
-    font-size: 22px;
+    font-size: 23px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
 }
 
 .track-info p:last-child {
-    opacity: 0.7;
+    opacity: 0.65;
+
+    font-size: 14px;
+
+    letter-spacing: 0.5px;
 }
 
 
@@ -305,7 +356,7 @@ h1 {
     width: 50px;
     height: 50px;
 
-    border: none;
+    border: 2px solid rgba(74, 59, 50, 0.08);
 
     border-radius: 50%;
 
@@ -319,14 +370,17 @@ h1 {
 
     transition:
         transform 0.2s ease,
-        box-shadow 0.2s ease;
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .controls button:hover {
-    transform: scale(1.08);
+    transform: translateY(-3px);
 
     box-shadow:
-        0 5px 10px rgba(74, 59, 50, 0.15);
+        0 7px 12px rgba(74, 59, 50, 0.18);
+
+    background: #fff8e9;
 }
 
 #play {
@@ -336,7 +390,17 @@ h1 {
     background: #91a58c;
 
     color: white;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 6px 12px rgba(74, 59, 50, 0.18);
 }
+
+#play:hover {
+    background: #839a7e;
+}
+
 .record::before {
     content: "";
 
@@ -348,6 +412,16 @@ h1 {
     border-radius: 50%;
 
     border: 1px solid rgba(255, 255, 255, 0.08);
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 35%,
+            rgba(255, 255, 255, 0.08),
+            transparent 55%
+        );
+
+    pointer-events: none;
 }
 
 .record::after {
@@ -397,6 +471,9 @@ h1 {
 
 .record.playing {
     animation: spin 4s linear infinite;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.3),
+        0 0 18px rgba(231, 156, 175, 0.25);
 }
 
 @keyframes spin {
