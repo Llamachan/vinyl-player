@@ -12,11 +12,15 @@ const nextButton = document.getElementById("next");
 const record = document.querySelector(".record");
 const tonearm = document.querySelector(".tonearm");
 
+const volume = document.getElementById("volume");
+const volumeIcon = document.getElementById("volume-icon");
+
 const songs = [
     {
         title: "Zzzz",
         artist: "Jazz Study",
         file: "assets/audio/alex-morgan-jazz-study-study-music-564266.mp3"
+
     },
     {
         title: "Meow",
@@ -34,6 +38,9 @@ function loadSong(song) {
 
     document.querySelector(".track-info p:last-child").textContent =
         song.artist;
+
+    document.getElementById("track-number").textContent =
+    `TRACK ${String(currentSong + 1).padStart(2, "0")} / ${String(songs.length).padStart(2, "0")}`;
 }
 
 loadSong(songs[currentSong]);
@@ -168,5 +175,44 @@ audio.addEventListener("pause", () => {
     tonearm.classList.remove("playing");
 
     playButton.textContent = "▶";
+
+});
+
+volume.addEventListener("input", () => {
+
+    audio.volume = volume.value;
+
+    if (audio.volume === 0) {
+        volumeIcon.textContent = "🔇";
+    } else {
+        volumeIcon.textContent = "🔊";
+    }
+
+});
+
+volumeIcon.addEventListener("click", () => {
+
+    if (audio.volume > 0) {
+
+        audio.dataset.previousVolume = audio.volume;
+
+        audio.volume = 0;
+
+        volume.value = 0;
+
+        volumeIcon.textContent = "🔇";
+
+    } else {
+
+        const previousVolume =
+            audio.dataset.previousVolume || 1;
+
+        audio.volume = previousVolume;
+
+        volume.value = previousVolume;
+
+        volumeIcon.textContent = "🔊";
+
+    }
 
 });

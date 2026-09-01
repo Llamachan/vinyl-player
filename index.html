@@ -44,12 +44,14 @@
     <section class="track-info">
 
         <p class="now-playing">NOW PLAYING</p>
+        <p id="track-number">TRACK 01 / 02</p>
 
         <h2>Plastic Love</h2>
 
         <p>Mariya Takeuchi</p>
 
     </section>
+
     <div class="progress-container">
 
         <input
@@ -58,6 +60,7 @@
             value="0"
             min="0"
             max="100"
+            step="0.1"
         >
 
         <div class="time">
@@ -69,7 +72,7 @@
         </div>
 
     </div>
-
+    
     <div class="controls">
 
         <button id="previous">⏮</button>
@@ -77,6 +80,21 @@
         <button id="play">▶</button>
 
         <button id="next">⏭</button>
+
+    </div>
+
+    <div class="volume-container">
+
+        <span id="volume-icon">🔊</span>
+
+        <input
+        type="range"
+        id="volume"
+        min="0"
+        max="1"
+        step="0.01"
+        value="1"
+        >
 
     </div>
 
