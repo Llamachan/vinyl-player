@@ -63,19 +63,7 @@ The vinyl record and tonearm animations are controlled using CSS classes that ar
 
 ## 🚀 Running the Project
 
-Clone the repository:
-
-```bash
-git clone YOUR_REPOSITORY_URL
-```
-
-Navigate into the project:
-
-```bash
-cd vinyl-player
-```
-
-Open `index.html` in a browser.
+https://llamachan.github.io/vinyl-player/
 
 No framework, package manager, or build process is required.
 
